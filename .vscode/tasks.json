@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start MemePerp Backend",
+      "type": "shell",
+      "command": "npm run start:backend",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Open MemePerp Frontend",
+      "type": "shell",
+      "command": "powershell -NoProfile -Command \"Start-Sleep -Seconds 2; Start-Process 'http://localhost:8787'\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

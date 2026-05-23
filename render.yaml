@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: memeperp
+    env: node
+    rootDir: .
+    buildCommand: npm ci
+    startCommand: npm run start:backend
+    healthCheckPath: /api/testnet/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: ALLOW_NULL_ORIGIN
+        value: "0"

@@ -1,0 +1,15 @@
+﻿{
+  "name": "memeperp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MemePerp frontend + shared testnet backend",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "start:backend": "node backend/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

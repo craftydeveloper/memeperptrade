@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MEMEPERP</title>
+<meta name="theme-color" content="#06080d"/>
+<link rel="manifest" href="./manifest.json"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Sora:wght@700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#05070b;
+  --ink:#f4f7ff;
+  --line:rgba(128,161,214,.24);
+  --edge:rgba(176,208,255,.28);
+  --glowA:#2ae3b0;
+  --glowB:#5bb6ff;
+  --glowC:#7df8df;
+}
+html,body{height:100%}
+body{
+  background:
+    radial-gradient(90vw 70vh at 4% 16%, rgba(42,227,176,.22), transparent 63%),
+    radial-gradient(72vw 58vh at 95% 18%, rgba(91,182,255,.28), transparent 67%),
+    radial-gradient(90vw 68vh at 50% 120%, rgba(125,248,223,.16), transparent 74%),
+    radial-gradient(120vw 100vh at 50% 50%, #08101d 0%, var(--bg) 64%);
+  color:var(--ink);
+  font-family:'Space Grotesk',sans-serif;
+  overflow:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.032) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.032) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse at center, #000 38%, transparent 84%);
+}
+.shell{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.hero{
+  width:min(1040px,100%);
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:52px 32px;
+  background:
+    radial-gradient(120% 120% at 12% -20%, rgba(42,227,176,.2), transparent 45%),
+    radial-gradient(90% 100% at 100% -20%, rgba(91,182,255,.26), transparent 48%),
+    linear-gradient(155deg, rgba(11,16,26,.86), rgba(8,11,18,.78));
+  box-shadow:
+    0 34px 90px rgba(0,0,0,.58),
+    inset 0 1px 0 rgba(255,255,255,.07),
+    inset 0 0 0 1px rgba(176,208,255,.06);
+  backdrop-filter:blur(10px);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before,
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:auto;
+  pointer-events:none;
+}
+.hero::before{
+  width:320px;
+  height:320px;
+  right:-90px;
+  top:-140px;
+  border-radius:50%;
+  background:radial-gradient(circle at center, rgba(42,227,176,.22), rgba(42,227,176,0) 68%);
+  filter:blur(4px);
+}
+.hero::after{
+  width:360px;
+  height:360px;
+  left:-130px;
+  bottom:-180px;
+  border-radius:50%;
+  background:radial-gradient(circle at center, rgba(91,182,255,.22), rgba(91,182,255,0) 72%);
+  filter:blur(6px);
+}
+.kicker{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+.wordmark{
+  font-family:'Sora','Syne',sans-serif;
+  font-weight:800;
+  letter-spacing:.035em;
+  line-height:1;
+  text-transform:uppercase;
+  font-size:clamp(48px, 11vw, 140px);
+  background:linear-gradient(96deg, #f8fcff 3%, #c7e8ff 40%, #9ff7dc 96%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 0 20px rgba(130,202,255,.2),
+    0 0 44px rgba(69,210,180,.2);
+  display:inline-block;
+  max-width:100%;
+  white-space:nowrap;
+  overflow:visible;
+  position:relative;
+  z-index:2;
+  animation:wordmarkLift 5.8s ease-in-out infinite;
+}
+.tagline{
+  margin:20px auto 0;
+  max-width:700px;
+  color:var(--muted);
+  font-size:clamp(13px,2.5vw,18px);
+  line-height:1.55;
+}
+.actions{
+  margin-top:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  position:relative;
+  z-index:2;
+}
+.btn{
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px 34px;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, opacity .2s ease, filter .2s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn.trade{
+  color:#03130e;
+  background:
+    linear-gradient(95deg,var(--glowA),var(--glowB));
+  border-color:rgba(176,235,255,.42);
+  box-shadow:
+    0 16px 38px rgba(40,170,178,.36),
+    inset 0 1px 0 rgba(255,255,255,.42);
+}
+.btn.trade:hover{
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:
+    0 22px 48px rgba(40,170,178,.5),
+    inset 0 1px 0 rgba(255,255,255,.54);
+  filter:saturate(1.08);
+}
+.btn.beta{
+  color:#d8e8ff;
+  border-color:var(--line);
+  background:rgba(96,120,156,.12);
+}
+.btn.beta:hover{
+  border-color:rgba(129,165,220,.56);
+  background:rgba(96,120,156,.2);
+}
+.note{
+  margin-top:14px;
+  font-size:11px;
+  color:#8195b5;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+@media (max-width:640px){
+  .hero{padding:38px 18px;border-radius:24px}
+  .actions{margin-top:24px}
+  .btn{width:100%}
+  .wordmark{font-size:clamp(40px, 14vw, 74px);letter-spacing:.02em}
+}
+
+@keyframes wordmarkLift{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+</style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <h1 class="wordmark">MEMEPERP</h1>
+      <div class="actions">
+        <a class="btn trade" href="./testnet.html">Trade</a>
+      </div>
+      <div style="margin-top:18px; text-align:center;">
+        <a href="./faq.html" style="color:#5bb6ff; font-size:13px; text-decoration:underline; cursor:pointer;">FAQ</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

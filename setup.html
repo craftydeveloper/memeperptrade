@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MemePerp — Quick Setup</title>
+  <style>body{font-family:Arial,Helvetica,sans-serif;background:#0b1221;color:#eaf3ff;display:flex;align-items:center;justify-content:center;height:100vh} .card{background:#0f1724;padding:20px;border-radius:10px;width:420px;box-shadow:0 8px 30px rgba(0,0,0,.6)} label{display:block;margin-top:10px;font-size:13px;color:#a8bddf} input{width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #253448;background:#071022;color:#eaf3ff} button{margin-top:14px;padding:10px 12px;border-radius:8px;border:none;background:#22e08a;color:#00221a;font-weight:700;cursor:pointer} .note{font-size:12px;color:#9fb6da;margin-top:8px}</style>
+</head>
+<body>
+  <div class="card">
+    <h3 style="margin:0 0 6px 0">MemePerp — Quick Setup</h3>
+    <div class="note">Paste your Birdeye API key and RPC URL below. This stores keys only in your browser localStorage (temporary). For production, keep keys server-side.</div>
+    <label for="birdeye">Birdeye API Key</label>
+    <input id="birdeye" placeholder="pk_live_xxx or leave blank to use Dexscreener fallback" />
+    <label for="rpc">RPC URL</label>
+    <input id="rpc" placeholder="https://api.mainnet-beta.solana.com" />
+    <label for="testnetApi">Testnet Backend Origin (optional)</label>
+    <input id="testnetApi" placeholder="https://your-backend.example.com" />
+    <button id="saveBtn">Save & Open App</button>
+    <div class="note">After saving, open the app and connect your wallet extension (Phantom/Backpack/Solflare). If wallet still doesn't connect, reload the page after installing the extension and ensure the page origin is allowed. For GitHub-hosted frontend + separate backend, set Testnet Backend Origin.</div>
+  </div>
+<script>
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const birdeye = document.getElementById('birdeye').value.trim();
+  const rpc = (document.getElementById('rpc').value.trim() || 'https://api.mainnet-beta.solana.com');
+  const testnetApi = document.getElementById('testnetApi').value.trim().replace(/\/+$/, '');
+  const cfg = { network: 'mainnet', rpc, birdeye };
+  try {
+    localStorage.setItem('mp_apiKeys', JSON.stringify(cfg));
+    if (testnetApi) localStorage.setItem('mp_testnet_api_origin', testnetApi);
+    else localStorage.removeItem('mp_testnet_api_origin');
+    alert('Saved to localStorage. Opening app...');
+    window.location.href = 'index.html';
+  } catch (e) {
+    alert('Failed to save settings: ' + e.message);
+  }
+});
+</script>
+</body>
+</html>

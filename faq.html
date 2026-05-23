@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>FAQ - MEMEPERP</title>
+  <meta name="theme-color" content="#06080d"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Sora:wght@700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #05070b;
+      --ink: #f4f7ff;
+      --line: rgba(128,161,214,.24);
+      --edge: rgba(176,208,255,.28);
+      --glowA: #2ae3b0;
+      --glowB: #5bb6ff;
+      --glowC: #7df8df;
+    }
+    html, body { height: 100%; }
+    body {
+      background:
+        radial-gradient(90vw 70vh at 4% 16%, rgba(42,227,176,.22), transparent 63%),
+        radial-gradient(72vw 58vh at 95% 18%, rgba(91,182,255,.28), transparent 67%),
+        radial-gradient(90vw 68vh at 50% 120%, rgba(125,248,223,.16), transparent 74%),
+        radial-gradient(120vw 100vh at 50% 50%, #08101d 0%, var(--bg) 64%);
+      color: var(--ink);
+      font-family: 'Space Grotesk',sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.032) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.032) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(ellipse at center, #000 38%, transparent 84%);
+    }
+    .faq-shell {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .faq-container {
+      width: min(600px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 48px 32px;
+      background:
+        radial-gradient(120% 120% at 12% -20%, rgba(42,227,176,.2), transparent 45%),
+        radial-gradient(90% 100% at 100% -20%, rgba(91,182,255,.26), transparent 48%),
+        linear-gradient(155deg, rgba(11,16,26,.86), rgba(8,11,18,.78));
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    }
+    h1 {
+      font-family: 'Sora','Syne',sans-serif;
+      font-size: 2.2em;
+      margin-bottom: 18px;
+    }
+    .back-link {
+      color: #5bb6ff;
+      text-decoration: none;
+      font-size: 1em;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+    .faq-placeholder {
+      color: #b0c4de;
+      font-size: 1.1em;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="faq-shell">
+    <div class="faq-container">
+      <a class="back-link" href="./home.html">&larr; Back to Home</a>
+      <h1>Frequently Asked Questions</h1>
+      <div class="faq-placeholder">FAQ content coming soon. Please check back later or contact support for urgent questions.</div>
+    </div>
+  </div>
+</body>
+</html>
